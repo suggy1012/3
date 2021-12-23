@@ -1,0 +1,14 @@
+n = int(input())
+sm = 0
+min_raz = 999999999
+for i in range(n):
+    a, b = map(int, input().split())
+    sm += max(a, b)
+    if (abs(a - b)) % 4 != 0:
+        min_raz = min(abs(a - b), min_raz)
+if min_raz == 999999999:
+    print('0')
+elif sm % 4 != 0:
+    print(sm)
+else:
+    print(sm - min_raz)

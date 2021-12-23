@@ -1,0 +1,13 @@
+from math import factorial
+n = int(input())
+k6 = k2 = k3 = 0
+kol = factorial(n) // (factorial(n - 2) * 2)
+for i in range(n):
+    sch = int(input())
+    if sch % 6 == 0:
+        k6 += 1
+    elif sch % 3 == 0:
+        k3 += 1
+    elif sch % 2 == 0:
+        k2 += 1
+print(kol - (k6 * n - ((1 + k6) * k6 // 2) + k2 * k3))

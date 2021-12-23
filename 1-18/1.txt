@@ -1,0 +1,49 @@
+n = int(input())
+mxx = prmxx = mx = prmx = ind = prind = mx13 = mx2 = mxn13 = mxn2 = ind2 = ind13 = indn2 = indn13 = ans1 = ans2 = ans3 = ans4 = 0
+for i in range(n):
+    sch = int(input())
+    if sch % 26 != 0:
+        if sch > mxx:
+            prmx = mxx
+            mxx = sch
+        if sch < mxx and sch > prmxx:
+            prmxx = sch
+        if sch % 13 == 0 and sch > mx13:
+            mx13 = sch
+            ind13 = i
+            continue
+        elif sch > mxn13:
+            mxn13 = sch
+            indn13 = i
+        if sch % 2 == 0 and sch > mx2:
+            mx2 = sch
+            ind2 = i
+            continue
+        elif sch > mxn2:
+            mxn2 = sch
+            indn2 = i
+        if sch > mx:
+            prmx = mx
+            mx = sch
+            ind = mx
+        if sch < mx and sch > prmx:
+            prmx = sch
+            rpind = i
+
+r = int(input())
+if (mxx * prmxx) % 26 != 0:
+    ans4 = mxx * prmxx
+if indn2 != ind13:
+    ans1 = mxn2 * mx13
+if ind2 != indn13:
+    ans2 = mx2 * mxn13
+if indn2 != indn13:
+    ans3 = mxn2 * mxn13
+if r == max(ans1, ans2, ans3, ans4, mx * prmx):
+    print("Вычисленное контрольное значение:", max(ans1, ans2, ans3, ans4, mx * prmx))
+    print("Контроль пройден.")
+elif max(ans1, ans2, ans3, ans4, mx * prmx) == 0:
+    print("Контроль не пройден.")
+else:
+    print("Вычисленное контрольное значение:", max(ans1, ans2, ans3, ans4, mx * prmx))
+    print("Контроль не пройден.")

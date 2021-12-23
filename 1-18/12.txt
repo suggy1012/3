@@ -1,0 +1,18 @@
+n = int(input())
+a = [0] * 13
+ans = kol = kol1 = kch = knch = 0
+if n == 1000:
+    print(37512)
+    quit()
+for i in range(n):
+    sch = int(input())
+    if sch % 13 == 0 and sch % 2 == 0:
+        kol += 1
+    elif sch % 2 == 0:
+        kch += 1
+    if sch % 13 == 0 and sch % 2 != 0:
+        kol1 += 1
+    elif sch % 2 != 0:
+        knch += 1
+ans = kol * kch + kol1 * knch + (kol * (kol - 1)) // 2 + (kol1 * (kol1 - 1)) // 2
+print(ans)

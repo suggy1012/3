@@ -1,0 +1,30 @@
+n = int(input())
+if n < 3:
+    for i in range(3):
+        sch = int(input())
+    print(0)
+else:
+    a = [0] * 3
+    dl = [0] * 7
+    ans = 0
+    for i in range(3):
+        a[i] = int(input())
+    for i in range(n - 3):
+        sch = int(input())
+        if a[i % 3] % 6 == 0:
+            dl[6] += 1
+        elif a[i % 3] % 3 == 0:
+            dl[3] += 1
+        elif a[i % 3] % 2 == 0:
+            dl[2] += 1
+        dl[1] += 1
+        if sch % 6 == 0:
+            ans += dl[1]
+        elif sch % 3 == 0:
+            ans += dl[2] + dl[6]
+        elif sch % 2 == 0:
+            ans += dl[3] + dl[6]
+        else:
+            ans += dl[6]
+        a[i % 3] = sch
+    print(ans)

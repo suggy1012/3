@@ -1,0 +1,41 @@
+n = int(input())
+mx, mxo, mn, prmn, mno, prmno = 0, 0, 999999999, 999999999, -99999999, -999999999
+ans, ogo, ogo1, ogo2 = 0, 0, 0, 0
+for i in range(n):
+    sch = int(input())
+    if sch == 0:
+        ogo = 1
+    if sch > 0:
+        ogo2 = 1
+        if sch > mx:
+            prmx = mx
+            mx = sch
+        if sch < mn:
+            prmn = mn
+            mn = sch
+        elif sch >= mn and sch <= prmn:
+            prmn = sch
+    else:
+        ogo1 = 1
+        if sch < mxo:
+            mxo = sch
+        if sch > mno:
+            prmno = mno
+            mno = sch
+        elif sch <= mno and sch >= prmno:
+            prmno = sch
+
+if ogo and ogo1 and ogo2:
+    print(min(0, mx * mxo, mno * prmno, mx * mxo, mn * prmn))
+elif not ogo and ogo1 and ogo2:
+    print(min(mx * mxo, mno * prmno, mx * mxo, mn * prmn))
+elif not ogo and not ogo1 and ogo2:
+    print(mn * prmn)
+elif not ogo and ogo1 and not ogo2:
+    print(mno * prmno)
+elif ogo and not ogo1 and not ogo2:
+    print(0)
+elif ogo and ogo1 and not ogo2:
+    print(0)
+elif ogo and not ogo1 and ogo2:
+    print(0)

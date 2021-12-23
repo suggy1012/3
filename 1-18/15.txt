@@ -1,0 +1,24 @@
+n = int(input())
+mxch5,  mxnch5, mxch, mxnch = 0, 0, 0, 0
+for i in range(n):
+    sch = int(input())
+    if sch % 5 == 0:
+        if sch % 2 == 0:
+            if sch > mxch5:
+                mxch5 = sch
+        else:
+            if sch > mxnch5:
+                mxnch5 = sch
+    else:
+        if sch % 2 == 0:
+            if sch > mxch:
+                mxch = sch
+        else:
+            if sch > mxnch:
+                mxnch = sch
+
+ans1 = mxch5 * mxnch5
+ans2 = mxch5 * mxnch
+ans3 = mxnch5 * mxch
+ans = max(ans1, ans2, ans3)
+print(ans)

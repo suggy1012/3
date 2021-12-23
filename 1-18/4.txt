@@ -1,0 +1,15 @@
+n = int(input())
+a = [0] * 16
+gg = 0
+cif = "0123456789abcdef"
+for i in range(n):
+    sch = hex(int(input()))[2:]
+    for i in sch:
+        a[cif.index(i)] += 1
+for i in range(16):
+    if gg > 1:
+        print(0)
+        quit()
+    if a[i] % 2 != 0:
+        gg += 1
+print(1)

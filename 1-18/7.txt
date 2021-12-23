@@ -1,0 +1,17 @@
+n = int(input())
+ff = [0] * 3
+ans = 0
+if n < 3:
+    for i in range(n):
+        sch = int(input())
+    print(0)
+else:
+    a = [0] * 12
+    for i in range(3):
+        ff[i] = int(input())
+    for i in range(n - 3):
+        sch = int(input())
+        a[ff[i % 3] % 12] += 1
+        ans += a[(12 - sch % 12) % 12]
+        ff[i % 3] = sch
+print(ans)

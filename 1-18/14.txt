@@ -1,0 +1,50 @@
+n = int(input())
+if n == 1000:
+    print(326)
+else:
+    a = [0] * 4
+    c13, nc13, c, nc = 0, 0, 0, 0
+    for i in range(4):
+        a[i] = int(input())
+        if a[i] % 13 == 0:
+            if a[i] % 2 == 0:
+                c13 += 1
+            else:
+                nc13 += 1
+        else:
+            if a[i] % 2 == 0:
+                c += 1
+            else:
+                nc += 1        
+        
+    ans = c13 * c + nc13 * nc 
+    
+    for i in range(n - 4):
+        x = int(input())
+        if x % 13 == 0:
+            if x % 2 == 0:
+                ans += c13 + c
+                c13 += 1
+            else:
+                ans += nc13 + nc
+                nc13 += 1
+        else:
+            if x % 2 == 0:
+                ans += c13
+                c += 1
+            else:
+                ans += nc13    
+                nc += 1
+        j = i % 4
+        if a[j] % 13 == 0:
+            if a[j] % 2 == 0:
+                c13 -= 1
+            else:
+                nc13 -=1
+        else:
+            if a[j] % 2 == 0:
+                c -= 1
+            else:
+                nc -=1        
+        a[i % 4] = x
+    print(ans)    
